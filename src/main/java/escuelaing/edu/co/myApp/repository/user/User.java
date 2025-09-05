@@ -1,15 +1,22 @@
 package escuelaing.edu.co.myApp.repository.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
+@Document(collection = "users")
+@JsonIgnoreProperties(ignoreUnknown = true) // ignora campos extra del JSON
 
 public class User {
+    @Id
     private  String id;
-    private final Date createdAt;
+    private Date createdAt;
     private String name;
     private String lastName;
     private String email;
     private String passwordHash;
-
+    public User() { }
     public User(String id, String name, String lastName, String email) {
         this.id = id;
         this.name = name;
